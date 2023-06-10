@@ -5,20 +5,24 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Hello from './components/Hello';
 import Name from './components/Name';
-import Parent from './components/ContainerSample';
 import Message from './components/Message';
+import Counter from './components/Counter';
+import { Parent } from './components/Parent';
+import { UseMemoSample } from './components/UseMemoSample';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
 );
 root.render(
-    <React.StrictMode>
+    <>
         {/* <App /> */}
-        <Hello />
+        {/* <Hello />
         <Name />
-        <Parent />
         <Message />
-    </React.StrictMode>
+        <Counter initialValue={30} /> */}
+        <Parent />
+        <UseMemoSample />
+    </>
 );
 
 // If you want to start measuring performance in your app, pass a function
