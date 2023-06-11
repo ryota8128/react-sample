@@ -1,37 +1,34 @@
-import React, { memo, useCallback, useContext, useState } from 'react';
+import { Children, useImperativeHandle, useRef, useState } from 'react';
+import React from 'react';
+import { ExitStatus } from 'typescript';
+import Message from './Message';
 
-type User = {
-    id: number;
-    name: string;
-};
+const Child = React.forwardRef((props, ref) => {
+    const [message, setMessage] = useState<string | null>(null);
 
-const UserContext = React.createContext<User | null>(null);
+    useImperativeHandle(ref, () => ({
+        showMessage: () => {
+            const date = new Date();
+            const message = `Hello, it's ${date.toLocaleDateString()} now`;
+            setMessage(message);
+        },
+    }));
 
-const GrandChild = () => {
-    const user = useContext(UserContext);
-    return user !== null ? <p>Hello, {user.name}</p> : null;
-};
-
-const Child = () => {
-    const now = new Date();
-
-    return (
-        <div>
-            <p>Current: {now.toLocaleDateString()}</p>
-            <GrandChild />
-        </div>
-    );
-};
+    return <div>{message !== null ? <p>{message}</p> : null}</div>;
+});
 
 export const Parent = () => {
-    const user: User = {
-        id: 1,
-        name: 'Arice',
+    const childRef = useRef<{ showMessage: () => void }>(null);
+    const onClick = () => {
+        if (childRef.current !== null) {
+            childRef.current.showMessage();
+        }
     };
 
     return (
-        <UserContext.Provider value={user}>
-            <Child />
-        </UserContext.Provider>
+        <div>
+            <button onClick={onClick}>Show Message</button>
+            <Child ref={childRef} />
+        </div>
     );
 };

@@ -10,6 +10,8 @@ import Counter from './components/Counter';
 import { Parent } from './components/Parent';
 import { UseMemoSample } from './components/UseMemoSample';
 import { Clock } from './components/Clock';
+import { ImageUploader } from './components/Uploader';
+import { Input } from './components/Input';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -21,9 +23,11 @@ root.render(
         <Name />
         <Message />
         <Counter initialValue={30} /> */}
-        <Parent />
-        <Clock />
+        {/* <Parent /> */}
+        {/* <Clock /> */}
+        {/* <ImageUploader /> */}
         {/* <UseMemoSample /> */}
+        <Input />
     </>
 );
 
