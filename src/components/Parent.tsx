@@ -25,6 +25,7 @@ export const Parent = () => {
         }
     };
 
+    
     return (
         <div>
             <button onClick={onClick}>Show Message</button>
