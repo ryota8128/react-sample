@@ -9,6 +9,7 @@ import Message from './components/Message';
 import Counter from './components/Counter';
 import { Parent } from './components/Parent';
 import { UseMemoSample } from './components/UseMemoSample';
+import { Clock } from './components/Clock';
 
 const root = ReactDOM.createRoot(
     document.getElementById('root') as HTMLElement
@@ -21,7 +22,8 @@ root.render(
         <Message />
         <Counter initialValue={30} /> */}
         <Parent />
-        <UseMemoSample />
+        <Clock />
+        {/* <UseMemoSample /> */}
     </>
 );
 
